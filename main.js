@@ -88,7 +88,7 @@ function drawAvatars() {
                 <h5>Ferocity: ${warrior.ferocity}</h5>
                 <h5>Intelligence: ${warrior.intelligence}</h5>
                 <h5>Notes: ${warrior.description}</h5>
-                <button class="btn btn-danger rounded mt-4" onclick = "chooseCombatant('${prop}')"> Choose </button></h4>
+                <button class="btn btn-danger rounded mt-4" onclick = "chooseSelf('${prop}')"> Choose </button></h4>
                 </div>`
     }
     document.getElementById("t2").innerText = template2
@@ -96,10 +96,9 @@ function drawAvatars() {
     $(document.getElementById("hideme")).show()
 }
 
-function chooseCombatant(person) {
+function chooseSelf(person) {
     player.push(combatants[person])
     drawOpponents()
-
 }
 
 function drawOpponents() {
@@ -117,13 +116,17 @@ function drawOpponents() {
                 <h5>Ferocity: ${warrior.ferocity}</h5>
                 <h5>Intelligence: ${warrior.intelligence}</h5>
                 <h5>Notes: ${warrior.description}</h5>
-                <button class="btn btn-danger rounded mt-4" onclick = "chooseCombatant('${prop}')"> Choose </button></h4>
+                <button class="btn btn-danger rounded mt-4" onclick = "chooseOther('${prop}')"> Choose </button></h4>
                 </div>`
         }
     }
     document.getElementById("t2").innerText = template2
     document.getElementById("avatars").innerHTML = template
     $(document.getElementById("hideme")).show()
+}
+
+function chooseOther(person) {
+    opponent.push(combatants[person])
 }
 
 function startGame() {
