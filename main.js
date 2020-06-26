@@ -109,7 +109,7 @@ function drawOpponents() {
             template2 =
                 `Choose Your Opponent`
             template +=
-                `   <div class="col-12 col-md-2 m-3 border" style="display: inline-grid">
+                `<div class="col-12 col-md-2 m-3 border" style="display: inline-grid">
                 <h4>Name: ${warrior.name}</h4>
                 <div><img src=${warrior.img} alt=""></div>
                 <h5>Strength: ${warrior.strength}</h5>
@@ -122,11 +122,51 @@ function drawOpponents() {
     }
     document.getElementById("t2").innerText = template2
     document.getElementById("avatars").innerHTML = template
-    $(document.getElementById("hideme")).show()
+
 }
 
 function chooseOther(person) {
     opponent.push(combatants[person])
+    $(document.getElementById("hideme")).hide()
+    drawGameboard()
+}
+
+function drawGameboard() {
+    let template = ""
+    template +=
+        ` <div class="row justify-content-center">
+        <div class="col-12 col-md-4 border m-3 text-center">
+            <h4><b>YOU:</b>${player[0].name}</h4>
+            <img src=${player[0].img} alt="">
+            <h4>current weapon: ${player[0].items[0]}</h4>
+            <h4>current health: ${player[0].health}</h4>
+        </div>
+        <div class="col-12 col-md-4 border m-3 text-center">
+            <h4><b>OPPONENT:</b>${opponent[0].name}</h4>
+            <img src=${opponent[0].img} alt="">
+            <h4>current weapon: ${opponent[0].items[0]}</h4>
+            <h4>current health: ${opponent[0].health}</h4>
+        </div>
+        <div class="col-12">
+            <div class="row justify-content-center align-content-center">
+                <h2>Choose a Weapon:</h2>
+                <img src="katana.jpg" alt="">
+                <button class="btn btn-danger rounded mt-4" onclick="chooseWeapon('${weapons.katana}')"> Choose
+                </button>
+                <img src="qiang.jpg" alt="">
+                <button class="btn btn-danger rounded mt-4" onclick="chooseWeapon('${weapons.qiang}')"> Choose </button>
+
+                <img src="nanchaku.jpg" alt="">
+                <button class="btn btn-danger rounded mt-4" onclick="chooseWeapon('${weapons.nanchaku}')"> Choose
+                </button>
+                <h2>Choose your attack:</h2>
+            </div>
+            <div class="row justify-content-center align-content-center">
+
+            </div>
+        </div>
+    </div>`
+    document.getElementById("gameboard").innerHTML = template;
 }
 
 function startGame() {
