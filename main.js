@@ -1,71 +1,71 @@
-let players = {
-    target: {
+let combatants = {
+    bugeisha: {
+        name: "Onna-bugeisha",
         health: 100,
-        name: "Ryu",
-        hits: 0,
+        strength: 5,
+        ferocity: 7,
+        intelligence: 9,
+        description: "Trained to kill.",
+        img: "bugeisha.jpg",
         items: []
     },
-    player: {
+    mulan: {
+        name: "Mulan",
         health: 100,
-        name: "Ken",
-        hits: 0,
+        strength: 7,
+        ferocity: 8,
+        intelligence: 6,
+        description: "A determined and skilled warrior",
+        img: "mulan.jpg",
+        items: []
+    },
+    shaolin: {
+        name: "Shaolin",
+        health: 100,
+        strength: 6,
+        ferocity: 6,
+        intelligence: 7,
+        description: "A large punch in a small package.",
+        img: "shaolin.jpg",
+        items: []
+    },
+    kungfupanda: {
+        name: "Kung fu Panda",
+        health: 100,
+        strength: 10,
+        ferocity: 5,
+        intelligence: 5,
+        description: "His bear hugs can kill you.",
+        img: "kungfupanda.jpg"
         items: []
     }
 }
 
-let items = {
-    fire: {
-        name: 'Fire',
-        modifier: 2,
-        description: "IT BURNS!"
-    },
-    sword: {
-        name: "Sword",
+let weapons = {
+    katana: {
+        name: 'Katana',
         modifier: 5,
-        description: "Slash your opponent!"
+        description: "legendary sword of the Saumrai"
     },
-    bodyblock: {
-        name: "Body Block",
+    qiang: {
+        name: "Sword",
+        modifier: 2,
+        description: "Chinese spear: swift and deadly"
+    },
+    nunchaku: {
+        name: "Nunchucks",
         modifier: 3,
-        description: "Block any attack!"
+        description: "brutal and relentless"
     }
 
 }
+
+
 
 function removeInstructions() {
-    document.getElementById("intro").remove()
-}
-function giveItem() {
-
+    $(document.getElementById("intro")).hide()
 }
 
-function slap() {
-    ryu.health--;
-    ryu.hits++;
-    update();
+function returnInstructions() {
+    $(document.getElementById("intro")).show()
 }
-
-function punch() {
-    ryu.health -= 5;
-    ryu.hits++;
-    update();
-}
-
-function kick() {
-    ryu.health -= 10;
-    ryu.hits++;
-    update();
-}
-
-function update() {
-    template = ""
-    template += `<span><h3>Target name: <span id="name">${players.target.name}</span>!</h3></span>
-  <div>
-  <span class="m-4">Health:<span id="health">${players.target.health}</span></span>
-  <span class="m-4">Hits:<span id="hits">${players.target.hits}</span></span>
-  </div>`
-    document.getElementById("health").innerHTML = template;
-}
-
-update()
-
