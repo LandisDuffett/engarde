@@ -2,3 +2,10 @@
 body {
   background-color: lavender;
 } 
+
+img {
+    max-height: 5rem;
+    max-width: 5rem;
+    border: 5px solid rgb(85, 85, 85);
+    margin: 1rem;
+}
