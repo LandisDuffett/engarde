@@ -1,5 +1,10 @@
 let player = []
 let opponent = []
+let opploss = 0
+let playloss = 0
+let oppweap = ""
+let gameStatus = ""
+let oppweapimg = ""
 
 let combatants = {
     bugeisha: {
@@ -134,7 +139,91 @@ function chooseOther(person) {
 function drawGameboard() {
     let template = ""
     template +=
-        ` `
+        `<div class="row justify-content-center">
+        <div class="col-12 col-md-4 border m-3 text-center">
+            <h4><b>YOU:</b>${player[0].name}</h4>
+            <img src=${player[0].img} alt="">
+            <h4>current weapon: ${player[0].items[0]}</h4>
+            <h4>current health: ${player[0].health}</h4>
+        </div>
+        <div class="col-12 col-md-4 border m-3 text-center">
+            <h4><b>OPPONENT:</b>${opponent[0].name}</h4>
+            <img src=${opponent[0].img} alt="">
+            <h4>current weapon: ${opponent[0].items[0]}</h4>
+            <h4>current health: ${opponent[0].health}</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="row">
+                <h1>PREPARE TO ATTACK!</h1>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <h2>Choose your weapon(optional):</h2>
+                </div>
+                <div class="col-4">
+                    <div class="row">
+                        <img src="katana.jpg" alt="">
+                    </div>
+                    <div class="row">
+                        <button class="btn btn-danger rounded mt-4" onclick="chooseWeapon('${weapons.katana}')">
+                            Katana
+                        </button>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="row">
+                        <img src="qiang.jpg" alt="">
+                    </div>
+                    <div class="row">
+                        <button class="btn btn-danger rounded mt-4" onclick="chooseWeapon('${weapons.qiang}')">
+                            Choose
+                        </button>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="row">
+                        <img src="nanchaku.jpg" alt="">
+                    </div>
+                    <div class="row">
+                        <button class="btn btn-danger rounded mt-4" onclick="chooseWeapon('${weapons.nanchaku}')">
+                            Choose
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <button class="btn btn-danger rounded mt-4" onclick="attack('${player[0].items[0]}')">
+                    Choose
+                </button>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="row">
+                <h1><b>STATUS BOARD</b></h1>
+            </div>
+            <div class="row">
+                <h2>DAMAGE:</h2>
+                <p>Opponent loses: ${opploss} health points.</p>
+                <p>You lose: ${playloss} health points.</p>
+                <p></p>
+            </div>
+            <div class="row">
+                <p>Opponent attacks with:</p>
+                <div><img src=${oppweapimg} alt=""></div>
+                <p>${oppweap}</p>
+            </div>
+            <div class="row">
+                <h2>RESULT OF OPPONENT'S ATTACK:</h2>
+                <p>Opponent loses: ${opploss} health points.</p>
+                <p>You lose: ${playloss} health points.</p>
+            </div>
+            <div class="row">
+                <h2>${gameStatus}</h2>
+            </div>
+        </div>
+    </div>`
     document.getElementById("gameboard").innerHTML = template;
 }
 

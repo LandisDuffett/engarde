@@ -57,71 +57,19 @@
 
     </div>
 
-    <div class="row justify-content-center">
-        <div class="col-12 col-md-4 border m-3 text-center">
-            <h4><b>YOU:</b>${player[0].name}</h4>
-            <img src=${player[0].img} alt="">
-            <h4>current weapon: ${player[0].items[0]}</h4>
-            <h4>current health: ${player[0].health}</h4>
-        </div>
-        <div class="col-12 col-md-4 border m-3 text-center">
-            <h4><b>OPPONENT:</b>${opponent[0].name}</h4>
-            <img src=${opponent[0].img} alt="">
-            <h4>current weapon: ${opponent[0].items[0]}</h4>
-            <h4>current health: ${opponent[0].health}</h4>
-        </div>
-        <div class="col-6">
-            <div class="row justify-content-center align-content-center">
-                <div class="col-12">
-                    <div class="row">
-                        <h2>Choose a Weapon (optional):</h2>
-                    </div>
-                    <div class="row">
-                        <div class="col-3">
-                            <img src="katana.jpg" alt="">
-                            <button class="btn btn-danger rounded mt-4" onclick="chooseWeapon('${weapons.katana}')">
-                                Choose
-                            </button>
-                        </div>
-                        <div class="col-3">
-                            <img src="qiang.jpg" alt="">
-                            <button class="btn btn-danger rounded mt-4" onclick="chooseWeapon('${weapons.qiang}')">
-                                Choose
-                            </button>
-                        </div>
-                        <div class="col-3">
-                            <img src="nanchaku.jpg" alt="">
-                            <button class="btn btn-danger rounded mt-4" onclick="chooseWeapon('${weapons.nanchaku}')">
-                                Choose
-                            </button>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <h2>Click to attack:</h2>
-                        <button class="btn btn-primary rounded mt-4" onclick="chooseWeapon('${weapons.nanchaku}')">
-                            Choose
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-6"></div>
+    <!-- Optional JavaScript -->
 
-
-
-
-        <!-- Optional JavaScript -->
-
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-            crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-            crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-            crossorigin="anonymous"></script>
-        <script src="main.js"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    <script src="main.js"></script>
 </body>
 
 </html>
