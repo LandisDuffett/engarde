@@ -238,7 +238,7 @@ function randomGen() {
 }
 
 function modifier() {
-    return Math.floor(Math.random() * 12)
+    return Math.floor(Math.random() * 12);
 }
 
 function noWeapon() {
