@@ -6,6 +6,7 @@ let oppweap = ""
 let gameStatus = ""
 let oppweapimg = ""
 
+
 let combatants = {
     bugeisha: {
         name: "Onna-bugeisha",
@@ -76,7 +77,6 @@ function removeInstructions() {
 
 function returnInstructions() {
     $(document.getElementById("intro")).show()
-
 }
 
 function drawAvatars() {
@@ -139,15 +139,15 @@ function chooseOther(person) {
 function drawGameboard() {
     let template = ""
     template +=
-        ` <div class="row m-2" style="justify-content: space-evenly;">
+        `<div class="row m-2" style="justify-content: space-evenly;">
             <div class="col-12 col-md-4 m-3 text-center toprow playerbox">
-                <h4><b>YOU:</b>${player[0].name}</h4>
+                <h4><b>YOU: </b>${player[0].name}</h4>
                 <img src=${player[0].img} alt="">
                 <h4>current weapon: ${player[0].items[0]}</h4>
                 <h4>current health: ${player[0].health}</h4>
             </div>
             <div class="col-12 col-md-4 m-3 text-center toprow playerbox">
-                <h4><b>OPPONENT:</b>${opponent[0].name}</h4>
+                <h4><b>OPPONENT: </b>${opponent[0].name}</h4>
                 <img src=${opponent[0].img} alt="">
                 <h4>current weapon: ${opponent[0].items[0]}</h4>
                 <h4>current health: ${opponent[0].health}</h4>
@@ -188,8 +188,8 @@ function drawGameboard() {
                             <img class="img-fluid" style="height: 5rem; width: 5rem;" src="nanchaku.jpg" alt="">
                         </div>
                         <div class="row align-items-center justify-content-center">
-                            <button class="btn btn-danger rounded m-4" onclick="chooseWeapon('${weapons.nanchaku}')">
-                                Nanchaku
+                            <button class="btn btn-danger rounded m-4" onclick="chooseWeapon('${weapons.nunchaku}')">
+                                Nunchaku
                             </button>
                         </div>
                     </div>
@@ -238,6 +238,80 @@ function drawGameboard() {
     document.getElementById("gameboard").innerHTML = template;
 }
 
+function chooseWeapon(weapon) {
+    player[0].items.push(weapon);
+}
+
+function randomGen(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random()) * (max - min) + min;
+}
+
+function modifier() {
+    return randomGen(4, 11);
+}
+
+function noWeapon() {
+    return randomGen(0, 4);
+}
+
+function oppWeapon() {
+    let z = randomGen(1, 4);
+    let w = opponent[0].items
+    switch (z) {
+        case 1:
+            w.push(weapons.nunchaku.name);
+            break;
+        case 2:
+            w.push(weapons.katana.name);
+            break;
+        case 3:
+            w.push(weapons.qiang.name)
+            break;
+    }
+    oppAttack()
+}
+
+function oppAttack() {
+    let m = modifier();
+    playloss2 -= m;
+    opploss2 -= m;
+    if ()
+        drawGameboard();
+}
+
+function attack(arms) {
+    let y = 0;
+    if (arms == false) {
+        y = noWeapon()
+    } else {
+        y = modifier()
+    }
+    playloss1 = y;
+    opploss1 = y;
+    update()
+}
+
+function update() {
+    if (opponent[0].items == false) {
+        if (opponent[0].health < 1) {
+            gameStatus = "GAME OVER: You win!"
+            drawGameboard;
+            break;
+        } else if (player[0].health < 1) {
+            gameStatus = `GAME OVER: ${opponent[0].name} wins!"
+        }
+    } else {
+        if (player[0].health < 1) {
+
+        } else if (opponent[0].health < 1) {
+
+        }
+    }
+    player[0].health -= playloss1;
+    opponent[0].health -= playloss2;
+}
 function startGame() {
     $(document.getElementById("hideme")).hide()
 }
