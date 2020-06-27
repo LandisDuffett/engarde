@@ -1,7 +1,9 @@
 let player = []
 let opponent = []
-let opploss = 0
-let playloss = 0
+let opploss1 = 0
+let playloss1 = 0
+let opploss2 = 0
+let playloss2 = 0
 let oppweap = ""
 let gameStatus = ""
 let oppweapimg = ""
@@ -208,10 +210,10 @@ function drawGameboard() {
                     <h2>DAMAGE:</h2>
                 </div>
                 <div class="row ml-4">
-                    <p>Opponent loses: ${opploss} health points.</p>
+                    <p>Opponent loses: ${opploss1} health points.</p>
                 </div>
                 <div class="row ml-4">
-                    <p>You lose: ${playloss} health points.</p>
+                    <p>You lose: ${playloss1} health points.</p>
                 </div>
                 <div class="row ml-1">
                     <h2>OPPONENT ATTACKS WITH:</h2>
@@ -224,10 +226,10 @@ function drawGameboard() {
                     <h2>RESULT OF OPPONENT'S ATTACK:</h2>
                 </div>
                 <div class="row ml-4">
-                    <p>Opponent loses: ${opploss} health points.</p>
+                    <p>Opponent loses: ${opploss2} health points.</p>
                 </div>
                 <div class="row ml-4">
-                    <p>You lose: ${playloss} health points.</p>
+                    <p>You lose: ${playloss2} health points.</p>
                 </div>
                 <div class="row ml-1">
                     <h2>${gameStatus}</h2>
@@ -274,14 +276,17 @@ function oppWeapon() {
 }
 
 function oppAttack() {
+    player[0].items = []
     let m = modifier();
     playloss2 -= m;
     opploss2 -= m;
-    if ()
-        drawGameboard();
+    player[0].health -= playloss2;
+    opponent[0].health -= playloss2;
+    drawGameboard();
 }
 
 function attack(arms) {
+    opponent[0].items = []
     let y = 0;
     if (arms == false) {
         y = noWeapon()
@@ -290,27 +295,35 @@ function attack(arms) {
     }
     playloss1 = y;
     opploss1 = y;
+    player[0].health -= playloss1;
+    opponent[0].health -= opploss1;
     update()
+    oppAttack()
 }
 
 function update() {
     if (opponent[0].items == false) {
         if (opponent[0].health < 1) {
             gameStatus = "GAME OVER: You win!"
-            drawGameboard;
+            drawGameboard();
             break;
         } else if (player[0].health < 1) {
-            gameStatus = `GAME OVER: ${opponent[0].name} wins!"
+            gameStatus = `GAME OVER: ${opponent[0].name} wins!`
+            drawGameboard();
+            break;
         }
     } else {
         if (player[0].health < 1) {
-
+            gameStatus = `GAME OVER: ${opponent[0].name} wins!`
+            drawGameboard();
+            break;
         } else if (opponent[0].health < 1) {
-
+            gameStatus = "GAME OVER: You win!"
+            drawGameboard();
+            break;
         }
     }
-    player[0].health -= playloss1;
-    opponent[0].health -= playloss2;
+    drawGameboard()
 }
 function startGame() {
     $(document.getElementById("hideme")).hide()
