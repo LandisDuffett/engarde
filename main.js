@@ -242,12 +242,12 @@ function modifier() {
 }
 
 function noWeapon() {
-    return randomGen()
+    return randomGen();
 }
 
 function oppWeapon() {
     let z = randomGen();
-    let w = opponent[0].items
+    let w = opponent[0].items;
     switch (z) {
         case 1:
             w.splice(0, 1, "Nunchaku");
