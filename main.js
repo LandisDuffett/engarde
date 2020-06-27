@@ -298,44 +298,45 @@ function attack(arms) {
     } else {
         y = noWeapon()
         j = modifier()
-        playloss1 = y;
-        opploss1 = j;
-        player[0].health -= playloss1;
-        opponent[0].health -= opploss1;
-        update()
-        oppAttack()
     }
+    playloss1 = y;
+    opploss1 = j;
+    player[0].health -= playloss1;
+    opponent[0].health -= opploss1;
+    update()
+    oppAttack()
+}
 
-    function update() {
-        if ((opponent[0].health < 1) && (player[0].health < 1)) {
-            gameStatus = "GAME OVER: You both die!";
-            drawGameboard();
-            return;
-        } else if (
-            opponent[0].health < 1
-        ) {
-            gameStatus = `GAME OVER: ${player[0].name} wins!`;
-            drawGameboard();
-            return;
-        } else if (player[0].health < 1) {
-            gameStatus = `GAME OVER: ${opponent[0].name} wins!`;
-            drawGameboard();
-            return;
-        }
+function update() {
+    if ((opponent[0].health < 1) && (player[0].health < 1)) {
+        gameStatus = "GAME OVER: You both die!";
         drawGameboard();
+        return;
+    } else if (
+        opponent[0].health < 1
+    ) {
+        gameStatus = `GAME OVER: ${player[0].name} wins!`;
+        drawGameboard();
+        return;
+    } else if (player[0].health < 1) {
+        gameStatus = `GAME OVER: ${opponent[0].name} wins!`;
+        drawGameboard();
+        return;
     }
+    drawGameboard();
+}
 
-    function startGame() {
-        $(document.getElementById("hideme")).hide()
-    }
+function startGame() {
+    $(document.getElementById("hideme")).hide()
+}
 
-    function stopGame() {
-        let template = ""
-        template +=
-            `<div class="container-fluid" style="height: 100vh z-index: 1;">
+function stopGame() {
+    let template = ""
+    template +=
+        `<div class="container-fluid" style="height: 100vh z-index: 1;">
         <p class="text-center" style="font-size: 10rem;">Good Bye!</p>
         </div>`
-        document.getElementById("bod").innerHTML = template;
-    }
+    document.getElementById("bod").innerHTML = template;
+}
 
-    startGame()
+startGame()
