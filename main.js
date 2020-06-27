@@ -5,7 +5,7 @@ let playloss1 = 0
 let opploss2 = 0
 let playloss2 = 0
 let oppweap = ""
-let gameStatus = ""
+let gameStatus = "It's Your Turn!"
 let oppweapimg = ""
 
 
@@ -69,8 +69,6 @@ let weapons = {
         description: "brutal and relentless"
     }
 }
-
-
 
 function removeInstructions() {
     $(document.getElementById("intro")).hide()
@@ -187,7 +185,7 @@ function drawGameboard() {
                     </div>
                     <div class="col-3 col3border">
                         <div class="row align-items-center justify-content-center">
-                            <img class="img-fluid" style="height: 5rem; width: 5rem;" src="nanchaku.jpg" alt="">
+                            <img class="img-fluid" style="height: 5rem; width: 5rem;" src="nunchaku.jpg" alt="">
                         </div>
                         <div class="row align-items-center justify-content-center">
                             <button class="btn btn-danger rounded m-4" onclick="chooseWeapon('${weapons.nunchaku}')">
@@ -200,6 +198,9 @@ function drawGameboard() {
                     <button class="btn btn-info rounded mt-4" onclick="attack('${player[0].items[0]}')">
                         <h3>ATTACK</h3>
                     </button>
+                </div>
+                <div class="row align-items-center text-center mb-3">
+                    <h3>Your weapon: ${player[0].items[0]}
                 </div>
             </div>
             <div class="col-5 statusboard bottomrow mb-3">
@@ -241,6 +242,7 @@ function drawGameboard() {
 }
 
 function chooseWeapon(weapon) {
+    debugger
     player[0].items.push(weapon);
 }
 
@@ -264,12 +266,18 @@ function oppWeapon() {
     switch (z) {
         case 1:
             w.push(weapons.nunchaku.name);
+            oppweap = weapons.nunchaku.name;
+            oppweapimg = weapons.nunchaku.img;
             break;
         case 2:
             w.push(weapons.katana.name);
+            oppweap = weapons.katana.name;
+            oppweapimg = weapons.katana.img;
             break;
         case 3:
-            w.push(weapons.qiang.name)
+            w.push(weapons.qiang.name);
+            oppweap = weapons.qiang.name;
+            oppweapimg = weapons.qiang.img;
             break;
     }
     oppAttack()
@@ -282,7 +290,8 @@ function oppAttack() {
     opploss2 -= m;
     player[0].health -= playloss2;
     opponent[0].health -= playloss2;
-    drawGameboard();
+    update()
+    drawGameboard()
 }
 
 function attack(arms) {
@@ -306,25 +315,25 @@ function update() {
         if (opponent[0].health < 1) {
             gameStatus = "GAME OVER: You win!"
             drawGameboard();
-            break;
+            return;
         } else if (player[0].health < 1) {
             gameStatus = `GAME OVER: ${opponent[0].name} wins!`
             drawGameboard();
-            break;
+            return;
         }
     } else {
         if (player[0].health < 1) {
             gameStatus = `GAME OVER: ${opponent[0].name} wins!`
             drawGameboard();
-            break;
+            return;
         } else if (opponent[0].health < 1) {
             gameStatus = "GAME OVER: You win!"
             drawGameboard();
-            break;
+            return;
         }
     }
-    drawGameboard()
 }
+
 function startGame() {
     $(document.getElementById("hideme")).hide()
 }
