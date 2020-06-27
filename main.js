@@ -138,7 +138,7 @@ function drawGameboard() {
             </div>
         </div>
         <div class="row m-2" style="justify-content: space-evenly;">
-            <div class="col-5 statusboard bottomrow mb-3">
+            <div class="col-12 col-md-5 statusboard bottomrow mb-3">
                 <div class="row text-center" style="justify-content: space-evenly;">
                     <div class="col-12">
                         <h1><b>PREPARE TO ATTACK!</b></h1>
@@ -146,7 +146,7 @@ function drawGameboard() {
                     <div class="col-12">
                         <h2>Choose your weapon(optional):</h2>
                     </div>
-                    <div class="col-3 col3border">
+                    <div class="col-12 col-md-3 col3border">
                         <div class="row align-items-center justify-content-center">
                             <img class="img-fluid" src="katana.jpg" alt="">
                         </div>
@@ -157,7 +157,7 @@ function drawGameboard() {
                             </button>
                         </div>
                     </div>
-                    <div class="col-3 col3border">
+                    <div class="col-12 col-md-3 col3border">
                         <div class="row align-items-center justify-content-center">
                             <img class="img-fluid" src="qiang.jpg" alt="">
                         </div>
@@ -167,7 +167,7 @@ function drawGameboard() {
                             </button>
                         </div>
                     </div>
-                    <div class="col-3 col3border">
+                    <div class="col-12 col-md-3 col3border">
                         <div class="row align-items-center justify-content-center">
                             <img class="img-fluid" style="height: 5rem; width: 5rem;" src="nunchaku.jpg" alt="">
                         </div>
@@ -187,7 +187,7 @@ function drawGameboard() {
                     <h3>Your weapon: ${player[0].items[0]}</h3>
                 </div>
             </div>
-            <div class="col-5 statusboard bottomrow mb-3">
+            <div class="col-12 col-md-5 statusboard bottomrow mb-3">
                 <div class="row justify-content-center">
                     <h1><b>STATUS BOARD</b></h1>
                 </div>
