@@ -334,7 +334,7 @@ function stopGame() {
     let template = ""
     template +=
         `<div class="container-fluid" style="height: 100vh z-index: 1;">
-        <p class="text-center" style="font-size: 10rem;">Good Bye!</p>
+        <p class="text-center" style="font-size: 8rem;">Good Bye!</p>
         </div>`
     document.getElementById("bod").innerHTML = template;
 }
