@@ -195,10 +195,10 @@ function drawGameboard() {
                     <h2>DAMAGE:</h2>
                 </div>
                 <div class="row ml-4">
-                    <p>Opponent loses: ${opploss1} health points.</p>
+                    <p>Opponent loses: ${opploss1} health point(s).</p>
                 </div>
                 <div class="row ml-4">
-                    <p>You lose: ${playloss1} health points.</p>
+                    <p>You lose: ${playloss1} health point(s).</p>
                 </div>
                 <div class="row ml-1">
                     <h2>OPPONENT FIGHTS WITH:</h2>
@@ -213,10 +213,10 @@ function drawGameboard() {
                     <h2>RESULT OF OPPONENT'S ATTACK:</h2>
                 </div>
                 <div class="row ml-4">
-                    <p>Opponent loses: ${opploss2} health points.</p>
+                    <p>Opponent loses: ${opploss2} health point(s).</p>
                 </div>
                 <div class="row ml-4">
-                    <p>You lose: ${playloss2} health points.</p>
+                    <p>You lose: ${playloss2} health point(s).</p>
                 </div>
                 <div class="row ml-1">
                     <h2>${gameStatus}</h2>
@@ -238,7 +238,7 @@ function randomGen() {
 }
 
 function modifier() {
-    return Math.floor(Math.random() * 10);
+    return Math.floor(Math.random() * 12);
 }
 
 function noWeapon() {
@@ -315,11 +315,11 @@ function update() {
     } else if (
         opponent[0].health < 1
     ) {
-        gameStatus = `GAME OVER: ${opponent[0].name} wins!`;
+        gameStatus = `GAME OVER: ${player[0].name} wins!`;
         drawGameboard();
         return;
     } else if (player[0].health < 1) {
-        gameStatus = `GAME OVER: ${player[0].name} wins!`;
+        gameStatus = `GAME OVER: ${opponent[0].name} wins!`;
         drawGameboard();
         return;
     }
@@ -328,6 +328,15 @@ function update() {
 
 function startGame() {
     $(document.getElementById("hideme")).hide()
+}
+
+function stopGame() {
+    let template = ""
+    template +=
+        `<div class="container-fluid" style="height: 100vh z-index: 1;">
+        <p class="text-center" style="font-size: 10rem;">Good Bye!</p>
+        </div>`
+    document.getElementById("bod").innerHTML = template;
 }
 
 startGame()
