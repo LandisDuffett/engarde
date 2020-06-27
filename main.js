@@ -238,7 +238,7 @@ function randomGen() {
 }
 
 function modifier() {
-    return Math.floor(Math.random()) * 12;
+    return Math.floor(Math.random() * 12);
 }
 
 function noWeapon() {
@@ -271,6 +271,7 @@ function oppWeapon() {
 function oppAttack() {
     let m = 0;
     let n = 0;
+    debugger
     if (opponent[0].items = "None") {
         m = noWeapon()
         n = noWeapon()
