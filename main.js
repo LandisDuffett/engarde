@@ -333,9 +333,10 @@ function startGame() {
 function stopGame() {
     let template = ""
     template +=
-        `<div class="container-fluid" style="height: 100vh z-index: 1;">
+        `<section class="container-fluid" style="height: 100vh z-index: 1;">
         <p class="text-center" style="font-size: 8rem;">Good Bye!</p>
-        </div>`
+        </section>`
+    $("div").addClass("viz");
     document.getElementById("bod").innerHTML = template;
 }
 
