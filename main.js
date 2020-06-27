@@ -139,88 +139,99 @@ function chooseOther(person) {
 function drawGameboard() {
     let template = ""
     template +=
-        `<div class="row justify-content-center">
-        <div class="col-12 col-md-4 border m-3 text-center">
-            <h4><b>YOU:</b>${player[0].name}</h4>
-            <img src=${player[0].img} alt="">
-            <h4>current weapon: ${player[0].items[0]}</h4>
-            <h4>current health: ${player[0].health}</h4>
-        </div>
-        <div class="col-12 col-md-4 border m-3 text-center">
-            <h4><b>OPPONENT:</b>${opponent[0].name}</h4>
-            <img src=${opponent[0].img} alt="">
-            <h4>current weapon: ${opponent[0].items[0]}</h4>
-            <h4>current health: ${opponent[0].health}</h4>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-6">
-            <div class="row">
-                <h1>PREPARE TO ATTACK!</h1>
+        ` <div class="row m-2" style="justify-content: space-evenly;">
+            <div class="col-12 col-md-4 m-3 text-center toprow playerbox">
+                <h4><b>YOU:</b>${player[0].name}</h4>
+                <img src=${player[0].img} alt="">
+                <h4>current weapon: ${player[0].items[0]}</h4>
+                <h4>current health: ${player[0].health}</h4>
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <h2>Choose your weapon(optional):</h2>
-                </div>
-                <div class="col-4">
-                    <div class="row">
-                        <img src="katana.jpg" alt="">
-                    </div>
-                    <div class="row">
-                        <button class="btn btn-danger rounded mt-4" onclick="chooseWeapon('${weapons.katana}')">
-                            Katana
-                        </button>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="row">
-                        <img src="qiang.jpg" alt="">
-                    </div>
-                    <div class="row">
-                        <button class="btn btn-danger rounded mt-4" onclick="chooseWeapon('${weapons.qiang}')">
-                            Choose
-                        </button>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="row">
-                        <img src="nanchaku.jpg" alt="">
-                    </div>
-                    <div class="row">
-                        <button class="btn btn-danger rounded mt-4" onclick="chooseWeapon('${weapons.nanchaku}')">
-                            Choose
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <button class="btn btn-danger rounded mt-4" onclick="attack('${player[0].items[0]}')">
-                    Choose
-                </button>
+            <div class="col-12 col-md-4 m-3 text-center toprow playerbox">
+                <h4><b>OPPONENT:</b>${opponent[0].name}</h4>
+                <img src=${opponent[0].img} alt="">
+                <h4>current weapon: ${opponent[0].items[0]}</h4>
+                <h4>current health: ${opponent[0].health}</h4>
             </div>
         </div>
-        <div class="col-6">
-            <div class="row">
-                <h1><b>STATUS BOARD</b></h1>
+        <div class="row m-2" style="justify-content: space-evenly;">
+            <div class="col-5 statusboard bottomrow mb-3">
+                <div class="row text-center" style="justify-content: space-evenly;">
+                    <div class="col-12">
+                        <h1><b>PREPARE TO ATTACK!</b></h1>
+                    </div>
+                    <div class="col-12">
+                        <h2>Choose your weapon(optional):</h2>
+                    </div>
+                    <div class="col-3 col3border">
+                        <div class="row align-items-center justify-content-center">
+                            <img class="img-fluid" src="katana.jpg" alt="">
+                        </div>
+                        <div class="row align-items-center justify-content-center">
+                            <button class="btn btn-danger rounded" style="margin-top: 4rem;"
+                                onclick="chooseWeapon('${weapons.katana}')">
+                                Katana
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-3 col3border">
+                        <div class="row align-items-center justify-content-center">
+                            <img class="img-fluid" src="qiang.jpg" alt="">
+                        </div>
+                        <div class="row align-items-center justify-content-center">
+                            <button class="btn btn-danger rounded m-4" onclick="chooseWeapon('${weapons.qiang}')">
+                                Qiang
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-3 col3border">
+                        <div class="row align-items-center justify-content-center">
+                            <img class="img-fluid" style="height: 5rem; width: 5rem;" src="nanchaku.jpg" alt="">
+                        </div>
+                        <div class="row align-items-center justify-content-center">
+                            <button class="btn btn-danger rounded m-4" onclick="chooseWeapon('${weapons.nanchaku}')">
+                                Nanchaku
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row align-items-center justify-content-center m-3">
+                    <button class="btn btn-info rounded mt-4" onclick="attack('${player[0].items[0]}')">
+                        <h3>ATTACK</h3>
+                    </button>
+                </div>
             </div>
-            <div class="row">
-                <h2>DAMAGE:</h2>
-                <p>Opponent loses: ${opploss} health points.</p>
-                <p>You lose: ${playloss} health points.</p>
-                <p></p>
-            </div>
-            <div class="row">
-                <p>Opponent attacks with:</p>
-                <div><img src=${oppweapimg} alt=""></div>
-                <p>${oppweap}</p>
-            </div>
-            <div class="row">
-                <h2>RESULT OF OPPONENT'S ATTACK:</h2>
-                <p>Opponent loses: ${opploss} health points.</p>
-                <p>You lose: ${playloss} health points.</p>
-            </div>
-            <div class="row">
-                <h2>${gameStatus}</h2>
+            <div class="col-5 statusboard bottomrow mb-3">
+                <div class="row justify-content-center">
+                    <h1><b>STATUS BOARD</b></h1>
+                </div>
+                <div class="row ml-1">
+                    <h2>DAMAGE:</h2>
+                </div>
+                <div class="row ml-4">
+                    <p>Opponent loses: ${opploss} health points.</p>
+                </div>
+                <div class="row ml-4">
+                    <p>You lose: ${playloss} health points.</p>
+                </div>
+                <div class="row ml-1">
+                    <h2>OPPONENT ATTACKS WITH:</h2>
+                </div>
+                <div class="row ml-4">
+                    <p>${oppweap}</p>
+                    <img src=${oppweapimg} alt="">
+                </div>
+                <div class="row ml-1">
+                    <h2>RESULT OF OPPONENT'S ATTACK:</h2>
+                </div>
+                <div class="row ml-4">
+                    <p>Opponent loses: ${opploss} health points.</p>
+                </div>
+                <div class="row ml-4">
+                    <p>You lose: ${playloss} health points.</p>
+                </div>
+                <div class="row ml-1">
+                    <h2>${gameStatus}</h2>
+                </div>
             </div>
         </div>
     </div>`
