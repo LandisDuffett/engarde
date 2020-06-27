@@ -339,4 +339,3 @@ function attack(arms) {
     }
 
     startGame()
-
