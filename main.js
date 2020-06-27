@@ -150,9 +150,8 @@ function drawGameboard() {
                         <div class="row align-items-center justify-content-center">
                             <img class="img-fluid" src="katana.jpg" alt="">
                         </div>
-                        <div class="row align-items-center justify-content-center">
-                            <button class="btn btn-danger rounded" style="margin-top: 4rem;"
-                                onclick="chooseWeapon('Katana')">
+                        <div class="row align-items-center justify-content-center" style="padding: 1rem; margin-top: 2rem;">
+                            <button class="btn btn-danger rounded" style="margin-top: 1.5em;" onclick="chooseWeapon('Katana')">
                                 Katana
                             </button>
                         </div>
