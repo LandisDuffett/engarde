@@ -285,7 +285,7 @@ function oppAttack() {
     update()
     player[0].items = ["None"]
     opponent[0].items = ["None"]
-    oppweap = "None"
+    oppweap = ""
     oppweapimg = "quest.png"
     drawGameboard()
 }
