@@ -281,7 +281,7 @@ function oppAttack() {
     playloss2 = m;
     opploss2 = n;
     player[0].health -= playloss2;
-    opponent[0].health -= playloss2;
+    opponent[0].health -= opploss2;
     update()
     player[0].items = ["None"]
     opponent[0].items = ["None"]
