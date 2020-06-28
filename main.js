@@ -178,7 +178,7 @@ function drawGameboard() {
                     </div>
                 </div>
                 <div class="row align-items-center justify-content-center m-3">
-                    <button class="btn btn-info rounded mt-4" onclick="attack('${player[0].items[0]}')">
+                    <button id="attack" class="btn btn-info rounded mt-4" onclick="attack('${player[0].items[0]}')">
                         <h3>ATTACK</h3>
                     </button>
                 </div>
@@ -225,6 +225,114 @@ function drawGameboard() {
     </div>`
     document.getElementById("gameboard").innerHTML = template;
 }
+
+function drawGameboardEnd() {
+    let template = ""
+    template +=
+        `<div class="row m-2 currplayrow" style="justify-content: space-evenly;">
+            <div class="col-5 col-md-4 m-3 text-center toprow playerbox">
+                <p><b>YOU: </b>${player[0].name}</p>
+                <img src=${player[0].img} alt="">
+                <h4>current weapon: ${player[0].items[0]}</h4>
+                <h4>current health: ${player[0].health}</h4>
+            </div>
+            <div class="col-5 col-md-4 m-3 text-center toprow playerbox">
+                <p><b>OPPONENT: </b>${opponent[0].name}</p>
+                <img src=${opponent[0].img} alt="">
+                <h4>current weapon: ${opponent[0].items[0]}</h4>
+                <h4>current health: ${opponent[0].health}</h4>
+            </div>
+        </div>
+        <div class="row m-2" style="justify-content: space-evenly;">
+            <div class="col-12 col-md-5 statusboard bottomrow mb-3">
+                <div class="row text-center" style="justify-content: space-evenly;">
+                    <div class="col-12">
+                        <h1><b>PREPARE TO ATTACK!</b></h1>
+                    </div>
+                    <div class="col-12">
+                        <h2>Choose your weapon(optional):</h2>
+                    </div>
+                    <div class="col-12 col-md-3 col3border">
+                        <div class="row align-items-center justify-content-center">
+                            <img class="img-fluid" src="katana.jpg" alt="">
+                        </div>
+                        <div class="row align-items-center justify-content-center" style="padding: 1rem; margin-top: 2rem;">
+                            <button class="btn btn-danger rounded" style="margin-top: 1.5em;" onclick="chooseWeapon('Katana')" disabled>
+                                Katana
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-3 col3border">
+                        <div class="row align-items-center justify-content-center">
+                            <img class="img-fluid" src="qiang.jpg" alt="">
+                        </div>
+                        <div class="row align-items-center justify-content-center">
+                            <button class="btn btn-danger rounded m-4" onclick="chooseWeapon('Qiang')" disabled>
+                                Qiang
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-3 col3border">
+                        <div class="row align-items-center justify-content-center">
+                            <img class="img-fluid" style="height: 5rem; width: 5rem;" src="nunchaku.jpg" alt="">
+                        </div>
+                        <div class="row align-items-center justify-content-center">
+                            <button class="btn btn-danger rounded m-4" onclick="chooseWeapon('Nunchaku')" disabled>
+                                Nunchaku
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row align-items-center justify-content-center m-3">
+                    <button id="attack" class="btn btn-info rounded mt-4" onclick="attack('${player[0].items[0]}')" disabled>
+                        <h3>ATTACK</h3>
+                    </button>
+                </div>
+                <div class="row align-items-center text-center m-3">
+                    <h3>Your weapon: ${player[0].items[0]}</h3>
+                </div>
+            </div>
+            <div class="col-12 col-md-5 statusboard bottomrow mb-3">
+                <div class="row justify-content-center">
+                    <h1><b>STATUS BOARD</b></h1>
+                </div>
+                <div class="row ml-1">
+                    <h2>DAMAGE:</h2>
+                </div>
+                <div class="row ml-4">
+                    <p>Opponent loses: ${opploss1} health point(s).</p>
+                </div>
+                <div class="row ml-4">
+                    <p>You lose: ${playloss1} health point(s).</p>
+                </div>
+                <div class="row ml-1">
+                    <h2>OPPONENT FIGHTS WITH:</h2>
+                </div>
+                <div class="row justify-content-center">
+                    <p>${oppweap}</p>
+                    </div>
+                    <div class="row justify-content-center">
+                    <img src=${oppweapimg} alt="">
+                </div>
+                <div class="row ml-1">
+                    <h2>RESULT OF OPPONENT'S ATTACK:</h2>
+                </div>
+                <div class="row ml-4">
+                    <p>Opponent loses: ${opploss2} health point(s).</p>
+                </div>
+                <div class="row ml-4">
+                    <p>You lose: ${playloss2} health point(s).</p>
+                </div>
+                <div class="row ml-1">
+                    <h1><b>${gameStatus}</b></h1>
+                </div>
+            </div>
+        </div>
+    </div>`
+    document.getElementById("gameboard").innerHTML = template;
+}
+
+
 
 function chooseWeapon(weapon) {
     let f = player[0].items
@@ -286,7 +394,7 @@ function oppAttack() {
     opponent[0].items = ["None"]
     oppweap = ""
     oppweapimg = "quest.png"
-    drawGameboard()
+    /*drawGameboard()*/
 }
 
 function attack(arms) {
@@ -310,20 +418,21 @@ function attack(arms) {
 function update() {
     if ((opponent[0].health < 1) && (player[0].health < 1)) {
         gameStatus = "GAME OVER: You both die!";
-        drawGameboard();
-        return;
+        debugger
+        drawGameboardEnd();
     } else if (
         opponent[0].health < 1
     ) {
         gameStatus = `GAME OVER: ${player[0].name} wins!`;
-        drawGameboard();
-        return;
+        drawGameboardEnd();
+
     } else if (player[0].health < 1) {
         gameStatus = `GAME OVER: ${opponent[0].name} wins!`;
+        drawGameboardEnd()
+    } else {
         drawGameboard();
-        return;
     }
-    drawGameboard();
+
 }
 
 function startGame() {
