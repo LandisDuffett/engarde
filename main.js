@@ -123,15 +123,15 @@ function chooseOther(person) {
 function drawGameboard() {
     let template = ""
     template +=
-        `<div class="row m-2" style="justify-content: space-evenly;">
-            <div class="col-12 col-md-4 m-3 text-center toprow playerbox">
-                <h4><b>YOU: </b>${player[0].name}</h4>
+        `<div class="row m-2 currplayrow" style="justify-content: space-evenly;">
+            <div class="col-5 col-md-4 m-3 text-center toprow playerbox">
+                <p><b>YOU: </b>${player[0].name}</p>
                 <img src=${player[0].img} alt="">
                 <h4>current weapon: ${player[0].items[0]}</h4>
                 <h4>current health: ${player[0].health}</h4>
             </div>
-            <div class="col-12 col-md-4 m-3 text-center toprow playerbox">
-                <h4><b>OPPONENT: </b>${opponent[0].name}</h4>
+            <div class="col-5 col-md-4 m-3 text-center toprow playerbox">
+                <p><b>OPPONENT: </b>${opponent[0].name}</p>
                 <img src=${opponent[0].img} alt="">
                 <h4>current weapon: ${opponent[0].items[0]}</h4>
                 <h4>current health: ${opponent[0].health}</h4>

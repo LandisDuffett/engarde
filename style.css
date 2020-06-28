@@ -38,8 +38,20 @@ img {
 .playerbox {
     border: solid black 3px;
     border-radius: 2%;
+    font-size: 2rem;
 }
 
 .viz {
     visibility: hidden;
+}
+
+@media screen and (max-width: 767px) {
+    div.playerbox {
+        font-size: 0.9rem!important;
+        margin: 0rem!important;
+    }
+
+    div.currplayrow {
+        margin: 0rem;
+    }
 }
