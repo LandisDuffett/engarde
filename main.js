@@ -12,7 +12,7 @@ let oppweapimg = "none.png"
 let combatants = {
     bugeisha: {
         name: "Onna-bugeisha",
-        health: 100,
+        health: 10,
         strength: 5,
         ferocity: 7,
         intelligence: 9,
@@ -22,7 +22,7 @@ let combatants = {
     },
     mulan: {
         name: "Mulan",
-        health: 100,
+        health: 10,
         strength: 7,
         ferocity: 8,
         intelligence: 6,
@@ -32,7 +32,7 @@ let combatants = {
     },
     shaolin: {
         name: "Shaolin",
-        health: 100,
+        health: 10,
         strength: 6,
         ferocity: 6,
         intelligence: 7,
@@ -42,7 +42,7 @@ let combatants = {
     },
     kungfupanda: {
         name: "Kung fu Panda",
-        health: 100,
+        health: 10,
         strength: 10,
         ferocity: 5,
         intelligence: 5,
@@ -414,7 +414,9 @@ function attack(arms) {
     player[0].health -= playloss1;
     opponent[0].health -= opploss1;
     update()
-    oppAttack()
+    if ((player[0].health > 0) && (opponent[0].health > 0)) {
+        oppAttack()
+    }
 }
 
 function update() {
@@ -435,7 +437,7 @@ function update() {
 
     } else if (player[0].health < 1) {
         gameStatus = `GAME OVER: ${opponent[0].name} wins!`;
-        drawGameboardEnd()
+        drawGameboardEnd();
     } else {
         drawGameboard();
     }
