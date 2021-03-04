@@ -6,7 +6,7 @@ let opploss2 = 0
 let playloss2 = 0
 let oppweap = ""
 let gameStatus = "It's Your Turn!"
-let oppweapimg = "quest.png"
+let oppweapimg = "none.png"
 
 
 let combatants = {
@@ -61,6 +61,11 @@ function removeInstructions() {
 
 function returnInstructions() {
     $(document.getElementById("intro")).show()
+}
+
+function newGame() {
+    $(document.getElementById("gameboard")).hide()
+    drawAvatars()
 }
 
 function drawAvatars() {
@@ -123,6 +128,7 @@ function chooseOther(person) {
 function drawGameboard() {
     let template = ""
     template +=
+        /*html*/
         `<div class="row m-2 currplayrow" style="justify-content: space-evenly;">
             <div class="col-5 col-md-4 m-3 text-center toprow playerbox">
                 <p><b>YOU: </b>${player[0].name}</p>
@@ -229,6 +235,7 @@ function drawGameboard() {
 function drawGameboardEnd() {
     let template = ""
     template +=
+        /*html*/
         `<div class="row m-2 currplayrow" style="justify-content: space-evenly;">
             <div class="col-5 col-md-4 m-3 text-center toprow playerbox">
                 <p><b>YOU: </b>${player[0].name}</p>
@@ -394,7 +401,7 @@ function oppAttack() {
     opponent[0].items = ["None"]
     oppweap = ""
     oppweapimg = "quest.png"
-    /*drawGameboard()*/
+    drawGameboard()
 }
 
 function attack(arms) {
@@ -416,9 +423,14 @@ function attack(arms) {
 }
 
 function update() {
+    if (player[0].health < 0) {
+        player[0].health = 0
+    }
+    if (opponent[0].health < 0) {
+        opponent[0].health = 0
+    }
     if ((opponent[0].health < 1) && (player[0].health < 1)) {
         gameStatus = "GAME OVER: You both die!";
-        debugger
         drawGameboardEnd();
     } else if (
         opponent[0].health < 1
