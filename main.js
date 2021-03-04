@@ -12,7 +12,7 @@ let oppweapimg = "none.png"
 let combatants = {
     bugeisha: {
         name: "Onna-bugeisha",
-        health: 10,
+        health: 100,
         strength: 5,
         ferocity: 7,
         intelligence: 9,
@@ -22,7 +22,7 @@ let combatants = {
     },
     mulan: {
         name: "Mulan",
-        health: 10,
+        health: 100,
         strength: 7,
         ferocity: 8,
         intelligence: 6,
@@ -32,7 +32,7 @@ let combatants = {
     },
     shaolin: {
         name: "Shaolin",
-        health: 10,
+        health: 100,
         strength: 6,
         ferocity: 6,
         intelligence: 7,
@@ -42,7 +42,7 @@ let combatants = {
     },
     kungfupanda: {
         name: "Kung fu Panda",
-        health: 10,
+        health: 100,
         strength: 10,
         ferocity: 5,
         intelligence: 5,
