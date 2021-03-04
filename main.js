@@ -63,11 +63,6 @@ function returnInstructions() {
     $(document.getElementById("intro")).show()
 }
 
-function newGame() {
-    $(document.getElementById("gameboard")).hide()
-    drawAvatars()
-}
-
 function drawAvatars() {
     let template = ""
     for (let prop in combatants) {
